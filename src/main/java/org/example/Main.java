@@ -5,14 +5,19 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         int trueKey = Biscuit.randomDeathKey(100000, 999999);
-        System.out.println("Biscuit-ключ доступа: " + trueKey);
+        ConsoleColors.writeString("Biscuit-ключ доступа: " + trueKey, ConsoleColors.YELLOW);
         Scanner scan = new Scanner(System.in);
-        System.out.println("Количество смертоносных потоков: ");
+        ConsoleColors.writeString("Кол-во смертоносных потоков: ", ConsoleColors.CYAN);
         long threads = scan.nextLong();
-        System.out.println("Введите ключ доступа: ");
+        ConsoleColors.writeString("[Biscuit] Ключ доступа: ", ConsoleColors.PURPLE);
         Integer key = scan.nextInt();
         if (key == trueKey){
-            System.out.println("Запущен алгоритм нагрузки процессора");
+            ConsoleColors.writeString("АЛГОРИТМ НАГРУЗКИ ПРОЦЕССОРА ЗАПУЩЕН ["+threads+" ПОТОКОВ]", ConsoleColors.GREEN);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             for (int i = 0; i < threads ; i++){
                 new PoisonThread("PoisonThread №" + i).start();
             }
