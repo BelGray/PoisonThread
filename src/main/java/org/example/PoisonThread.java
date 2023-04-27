@@ -15,7 +15,7 @@ public class PoisonThread extends Thread {
             long deathPoisonActionDenominator = Biscuit.randomVariable(1L, 9223372036854775807L);
             for (long x = deathNum; true; x /= deathDenominator) {
                 long poisonAction = (x / deathPoisonActionDenominator);
-                ConsoleColors.writeString("Poison thread is loading the processor. Thread: " + poisonThreadName, ConsoleColors.RED);
+                ConsoleColors.writeString("Poison thread is loading the processor. Thread: " + poisonThreadName, ConsoleColors.GREEN);
             }
 
         }
